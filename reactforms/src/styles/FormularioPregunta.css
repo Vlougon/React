@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form {
+    background-color: rgb(255, 255, 255);
+    max-width: 90%;
+    margin: 0 auto;
+    margin-top: 3vh;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 13px 5px rgba(0, 0, 0, .6);
+}
+
+textarea {
+    border: 1px solid black !important;
+    text-align: center;
+    font-weight: bold !important;
+    color: white;
+}
+
+::placeholder {
+    opacity: .1;
+    font-weight: normal !important;
+    color: white !important;
+}
