@@ -1,5 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 import useFetch from '../hooks/useFetch.jsx';
+import '../styles/Blog.css';
 
 export default function Blog() {
     const { data, error, loading } = useFetch("https://rickandmortyapi.com/api/character");

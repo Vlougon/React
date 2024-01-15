@@ -1,0 +1,5 @@
+ul.list-group a:hover {
+    background-color: #0d6efd;
+    color: white;
+    cursor: default;
+}

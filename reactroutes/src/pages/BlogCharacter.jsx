@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import '../styles/BlogCharacter.css';
 
 export default function BlogCharacter() {
     const params = useParams();
