@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from 'sweetalert2';
 import '../styles/FormularioPregunta.css';
 
 export default function QuestionForm({ addNewQuestion }) {
@@ -28,7 +29,12 @@ export default function QuestionForm({ addNewQuestion }) {
 
         if (question.correctAnswer === 0) {
 
-            window.alert('¡Es necesario seleccionar una Respuesta!');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "¡No puedes añadir una pregunta cuya respuetsa correcta no ha sido especificada!",
+            });
+
             return
         }
 
@@ -36,7 +42,13 @@ export default function QuestionForm({ addNewQuestion }) {
             ...question
         });
 
-        window.alert('¡Pregunta Añadida!');
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "¡Pregunta Añadida!",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 
     return (
@@ -66,7 +78,7 @@ export default function QuestionForm({ addNewQuestion }) {
                         onChange={handleChange}
                     />
                 </div>
-                
+
                 <div className="col-12 col-sm-6 form-check mb-2">
                     <input type="radio" name="correctAnswer" className="form-check-input" id="inputCheck2" onChange={handleChange} />
                     <input
