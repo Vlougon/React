@@ -1,14 +1,23 @@
 import { Link, useSearchParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { CharacterContext } from "../App.js";
 import useFetch from '../hooks/useFetch.jsx';
 import '../styles/Blog.css';
 
 export default function Blog() {
     const { data, error, loading } = useFetch("https://rickandmortyapi.com/api/character");
+    const { setCharacterList } = useContext(CharacterContext);
     let [searchParams, setSearchParams] = useSearchParams('');
 
     const handleChange = (e) => {
         setSearchParams({ [e.target.name]: e.target.value });
     }
+
+    useEffect(() => {
+        if (data) {
+            setCharacterList(data.results);
+        }
+    }, [data, setCharacterList]);
 
     if (loading) return (<h1>Buscando ...</h1>);
     if (error) return (<h1>Un error ha ocurrido ...</h1>);
