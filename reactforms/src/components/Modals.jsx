@@ -22,7 +22,7 @@ export default function ConfirmDeletion({ deleteClass, deleteFunction }) {
                         <div className="modal-body">
                             ¿Estás seguro de querer eliminar la {deleteClass} seleccionada?
                         </div>
-                        <div className="modal-footer">
+                        <div className="modal-footer justify-content-between">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleButton}>Cerrar</button>
                             <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={handleButton}>Borrar</button>
                         </div>

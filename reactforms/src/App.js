@@ -1,10 +1,12 @@
-// import logo from './logo.svg';
 import { useState } from 'react';
 import QuestionForm from './components/FormularioPregunta';
 import CreatedQuestions from './components/PreguntasCreadas'
+import { createContext } from 'react';
 import './App.css';
 
 let actualQuestionID = 1;
+
+export const QuestionContext = createContext();
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -21,8 +23,10 @@ function App() {
 
   return (
     <div className="App">
-      <QuestionForm addNewQuestion={addQuestion} />
-      <CreatedQuestions addedQuestions={questions} deleteQuestion={removeQuestion} />
+      <QuestionContext.Provider value={{ removeQuestion }}>
+        <QuestionForm addNewQuestion={addQuestion} />
+        <CreatedQuestions addedQuestions={questions} />
+      </QuestionContext.Provider>
     </div>
   );
 }
