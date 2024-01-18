@@ -1,8 +1,9 @@
-import { useState } from "react";
 import Swal from 'sweetalert2';
+import { useContext, useState } from "react";
+import { QuestionsDispatchContext } from "./QuestionContext";
 import '../styles/FormularioPregunta.css';
 
-export default function QuestionForm({ addNewQuestion }) {
+export default function QuestionForm() {
     const [question, setQuestion] = useState({
         questionStatement: "",
         possibleAnswer1: "PossibleAnswer1",
@@ -12,6 +13,7 @@ export default function QuestionForm({ addNewQuestion }) {
         correctAnswer: 0,
         liked: false
     });
+    const dispatch = useContext(QuestionsDispatchContext);
 
     const handleChange = (e) => {
         let newValue = (e.target.type === "checkbox") ? e.target.checked : e.target.value;
@@ -38,9 +40,7 @@ export default function QuestionForm({ addNewQuestion }) {
             return
         }
 
-        addNewQuestion({
-            ...question
-        });
+        dispatch({ type: 'ADD_QUESTION', payload: {...question }});
 
         Swal.fire({
             position: "top-end",

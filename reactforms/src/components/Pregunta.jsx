@@ -1,18 +1,18 @@
 import ConfirmDeletion from './Modals';
-import { QuestionContext } from '../App';
 import { useContext } from 'react';
+import { QuestionsDispatchContext } from './QuestionContext';
 import '../styles/Pregunta.css';
 
 let selectecCardID = 0;
 
 export default function Question({ singleQuestion, questionID }) {
-    const { removeQuestion } = useContext(QuestionContext);
     const { id, questionStatement, possibleAnswer1, possibleAnswer2, possibleAnswer3, possibleAnswer4 } = singleQuestion;
+    const dispatch = useContext(QuestionsDispatchContext);
 
     const deleteQuestion = (deleteMethod) => {
 
         if (deleteMethod) {
-            removeQuestion(selectecCardID);
+            dispatch({ type: 'REMOVE_QUESTION', payload: selectecCardID })
         }
     }
 
